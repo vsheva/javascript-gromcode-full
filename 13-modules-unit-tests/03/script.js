@@ -14,4 +14,5 @@ export let getMinSquaredNumber =(array)=>{
 
 }
 
-// console.log(getMinSquaredNumber([2,-8,5,4]))
+console.log(getMinSquaredNumber([2,-8,5,4]))
+
