@@ -10,3 +10,4 @@ const findDivCount = (a,b,n) => {
 }
 
 console.log(findDivCount(6,9,3))
+
