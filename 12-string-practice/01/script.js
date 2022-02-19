@@ -1,39 +1,26 @@
-//algo
+let calc = (expression) => {
+    let result;
+    let array = expression.split(' ')
 
-//1. create function and starPosition
-//2.  loop === в переменную chunk записываем отрезанный ломоть текста  ----если длинна ломоти 0, то выходим
-//3. пушим в массив ломоть, первая буква заглавная + остальные
-//проверка на ноль
-//4.  увеличиваем start position на длинну
-
-//5. склеиваем  с помощью join
-
-
-// "hvcahrsfbchla" => ["abcd" , "def"] => ["Abcd", "Def"]
-//=>"Abcd"\n"Def"
-
-
-
-
-const splitText = (text, len=10) => {
-    if (typeof text !== 'string') {
-        return null
-    }
-
-    const arr = [];
-    let startPosition = 0;
-
-    while (true) {
-        let chunk = text.substr(startPosition, len);
-        if (chunk.length === 0) {
+    switch (array[1]) {
+        case "+" :
+            result = +array[0] + +array[2]
             break;
-        }
-        arr.push(chunk[0].toUpperCase() + chunk.slice(1));
-        startPosition += len;
+
+        case "-" :
+            result = array[0] - array[2]
+            break;
+
+        case "*" :
+            result = array[0] * array[2]
+            break;
+
+        case "/" :
+            result = array[0] / array[2]
+            break;
     }
-    return arr.join('\n');
+
+    return (`${expression} = ${result}`)
 }
 
-
-console.log(splitText("abcdefgrghhjj", 4))
-
+console.log(calc("7 - 16"))
