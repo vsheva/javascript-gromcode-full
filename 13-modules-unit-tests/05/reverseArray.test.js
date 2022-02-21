@@ -1,4 +1,4 @@
-import  {reverseArray} from "./script.js";
+import  {reverseArray} from "./reverseArray.js";
 
 
 it("should get reversed array", ()=>{
