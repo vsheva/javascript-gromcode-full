@@ -1,4 +1,4 @@
-import  {getMinSquaredNumber} from "./script.js";
+import  {getMinSquaredNumber} from "./getMinSquaredNumber.js";
 
 it("should get null if not array", ()=>{
     expect(getMinSquaredNumber("Hello world")).toEqual(null);
