@@ -1,15 +1,14 @@
-import  {getMinSquaredNumber} from "./script.js";
+import  {withdraw} from "./script.js";
 
-it("should get null if not array", ()=>{
-    expect(getMinSquaredNumber("Hello world")).toEqual(null);
+
+
+it("should withdraw money", ()=>{
+    expect(withdraw(['Ann', 'John', 'User'], [20, 50, -6], 'John', 10)).toEqual(40);
 });
 
-it("should get null if array is empty", ()=>{
-    expect(getMinSquaredNumber([])).toEqual(null);
+
+it("should return -1 if not enough money", ()=>{
+    expect(withdraw(['Ann', 'John', 'User'], [20, 50, -6], 'John', 60)).toEqual(-1);
 });
 
-it("should get square of minimum absolute", ()=>{
-    const result =getMinSquaredNumber([2,5]);
-    expect(result).toEqual(4);
-});
 
