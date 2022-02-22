@@ -20,7 +20,7 @@ user["address"]={}
 user['address']["country"]="Ukraine"
 
 /* присвой объекту в 'address' свойство 'building', со значением 17 */
-user["address"]['building']=17
+user.address.building=17
 
 /* выведи в консоль итоговый объект user */
 
