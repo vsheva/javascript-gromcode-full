@@ -1,29 +1,22 @@
-let memory=0
-
-export default function add (number) {
-   return memory+=number
+let memory = 0
+export function add(number) {
+    memory += number;
+    return memory;
 }
 
-export default function decrease (number) {
-    return memory-=number
+export function decrease(number) {
+    memory -= number;
+    return memory;
 }
 
-export default function reset (number) {
-    return memory=0
+export function reset() {
+    memory = 0;
+    return memory;
 }
 
-export default function getMemo(number) {
+export function getMemo() {
     return memory
 }
-
-
-
-
-
-
-
-
-
 
 
 
