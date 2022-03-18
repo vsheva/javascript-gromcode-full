@@ -8,16 +8,18 @@
 // в 1-й индекс - "фамилия". Возврашаем массив отдельных строк
 
 
-const user={
-    firstName:"John",
-    lastName:"Doe",
-    getFullName: function() {
-        return(`${this.firstName} ${this.lastName}`)
+const user = {
+    firstName: "John",
+    lastName: "Doe",
+    getFullName: function () {
+        return (`${this.firstName} ${this.lastName}`)
     },
-    setFullName: function(name) {
-        let nameArray= name.split(" ")
-        this.firstName= nameArray[0]
-        this.lastName= nameArray[1]
+
+
+    setFullName: function (name) {
+        let nameArray = name.split(" ")
+        this.firstName = nameArray[0]
+        this.lastName = nameArray[1]
         return nameArray
     }
 }
