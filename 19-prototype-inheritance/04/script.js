@@ -1,37 +1,24 @@
 'use strict';
 
-// algo
-// 1. create function saveFuncCalls(func) {}
-// 2. функцию withMemory
-// 3. реализация масива calls функции withMemory
-// a) в обертке создаем условие if Array.isArray true => push;
-// b) return func.apply(this, arguments)
-// 4. withMemory.calls = []
-// 5. return withMemory
+const user = {
+    firstName:'John',
+    lastName:'Doe',
+    get fullName() {
+        return (`${this.firstName} ${this.lastName}`)
+    },
 
 
+    set fullName(value) {
+        //ВНИМАНИЕ!
+        const [firstName, lastName] = value.split(' ');
+        this.firstName=firstName;
+        this.lastName=lastName;
+        //ВНИМАНИЕ!
 
-// algo
-// 1. create function saveFuncCalls(func) {}
-// 2. функцию withMemory
-// 3. реализация масива calls функции withMemory
-// a) в обертке создаем условие if Array.isArray true => push;
-// b) return func.apply(this, arguments)
-// 4. withMemory.calls = []
-// 5. return withMemory
-
-
-
-export function saveFuncCalls(func) {
-    function withMemory(...args) {
-        if (Array.isArray(withMemory.calls)) {
-            withMemory.calls.push(args);
-            return func.apply(this, args);
-        }
-    };
-
-    withMemory.calls = [];
-
-    return withMemory
+    }
 }
 
+console.log(user.fullName)
+user.fullName="Valeriy Shevhenko"
+console.log(user.lastName)
+console.log(user.fullName)
