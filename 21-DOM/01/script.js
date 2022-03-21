@@ -1,4 +1,4 @@
-const tasks = [
+export const tasks = [
     { text: 'Buy milk', done: false },
     { text: 'Pick up Tom from airport', done: false },
     { text: 'Visit party', done: false },
@@ -11,7 +11,7 @@ const tasks = [
  * @return {undefined}
  */
 const renderTasks = tasksList => {
-    const ellList = document.querySelector('.list');
+    const elemList = document.querySelector('.list');
 
 
     const elements = tasksList
@@ -33,7 +33,7 @@ const renderTasks = tasksList => {
             return ellListItem;
         });
 
-    ellList.append(...elements);
+    elemList.append(...elements);
 };
 
 renderTasks(tasks);
