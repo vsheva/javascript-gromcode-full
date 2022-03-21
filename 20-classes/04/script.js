@@ -1,78 +1,43 @@
-/* ===> 1 <=== */
-const student = {
-    name: 'Tom',
-};
+'use strict';
 
-function sayName() {
-    console.log(this.name);
-}
+// algo
 
-// вызовите ф-цию sayName так, чтобы в консоль вывелось имя студента
-// ... your code here
-sayName.call(student);
+// create class Order
+// add constructor(price, city, type)
+// isConfirmed = false
+// checkPrice() =>    this.price > 1000
+//  confirmOrder() => if(!isConfirmed) isConfirmed = true, dateConfirmed = new Date()
+//  isValidType() => return this.type === 'Buy' || 'Sell'
 
 
-// вызовите ф-цию sayName так, чтобы в консоль вывелось имя 'Bruce' (используйте другой объект)
-sayName.call({name: "Bruce"});
+ export class Order {
+    constructor(price, city, type) {
+        this.city = city;
+        this.dateCreated=new Date();
+        this.id = "123";
+        this.price = price;
+        this.type = type;
+        this.isConfirmed = false;
+        this.dateConfirmed = new Date();
 
-
-/* ===> 2 <=== */
-const company = {
-    companyName: 'Microsoft'
-};
-
-function greeting(firstName, lastName) {
-    console.log(`Hello, ${firstName} ${lastName}. Welcome to the ${this.companyName}`);
-}
-
-// вызовите ф-цию greeting так, чтобы в консоль вывелось
-// 'Hello, Bob Marley. Welcome to the Microsoft'
-// используйте объект company
-// ... your code here
-greeting.call(company, "Bob", "Marley")
-
-/* ===> 3 <=== */
-const country = {
-    countryName: 'Ukraine',
-    capital: 'Kyiv'
-};
-
-function getPopulation(population) {
-    return `Population in ${this.countryName} is ${population}`;
-}
-
-// вызовите ф-цию getPopulation так, чтобы она вернула
-// 'Population in Ukraine is 43000'
-// 43000 передавайте в виде числа
-// используйте объект country
-// результат работы ф-ции getPopulation присвойте в переменную и выведите в консоль
-// ... your code here
-
-const populationOfUkraine = getPopulation.call(country, 43000)
-console.log(populationOfUkraine)
-
-
-/* ===> 4 <=== */
-const transaction = {
-    amount: 1200,
-    operation: 'sell',
-    currency: 'USD',
-    exchange: 'NYSE',
-    printTransaction() {
-        console.log(`${this.amount} ${this.currency} - ${this.operation} on ${this.exchange}`);
+    }
+    checkPrice() {
+        return  this.price > 1000
+    }
+    confirmOrder() {
+     if(this.isConfirmed===false) {
+         this.isConfirmed = true;
+         this.dateConfirmed = new Date();
+     }
+    }
+    isValidType() {
+        return (this.type === 'Buy' || this.type === 'Sell')
     }
 }
 
-const anotherTransaction = {
-    amount: 400,
-    operation: 'buy',
-    currency: 'USD',
-    exchange: 'NASDAQ',
-};
+const myOrder = new Order("NY", 2000, "Sell")
 
-// вызовите метод transaction.printTransaction так, чтобы в консоль вывелось
-// '400 USD - buy on NASDAQ'
-// используйте объект anotherTransaction как контекст
-// ... your code here
-
-transaction.printTransaction.call(anotherTransaction)
+console.log(myOrder)
+console.log(myOrder.checkPrice())
+myOrder.confirmOrder()
+console.log(myOrder.isValidType())

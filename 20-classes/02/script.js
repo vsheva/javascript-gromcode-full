@@ -1,3 +1,17 @@
+// algo
+
+// create two classes Vehicle and Ship
+// Vehicle should have
+// two props name and wheels
+// two methods move and stop => log(this.name + text)
+//
+// Ship extends Vehicle
+// constructor(name, numberOfWheels, maxSpeed)
+// method move() expands parental move() => log(this.name + text); super.move()
+// method stop() expands parental move() => super.stop(); log(this.name + text)
+
+
+
 class Vehicle {
     constructor(name, numberOfWheels) {
         this.name = name;
