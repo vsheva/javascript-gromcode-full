@@ -1,3 +1,12 @@
+// algo
+
+// input tasksList array
+// taking our element => document.querySelector
+//  elements array .map()
+// create dom elements
+//add:  parentElement.append
+
+
 export const tasks = [
     {text: 'Buy milk', done: false},
     {text: 'Pick up Tom from airport', done: false},
@@ -34,9 +43,6 @@ const renderTasks = tasksList => {
 };
 
 renderTasks(tasks);
-
-
-
 
 
 

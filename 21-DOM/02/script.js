@@ -1,16 +1,14 @@
-const callbackPrompt = {
-    message: "Tell me your number",
-
-    showPrompt() {
-        const phoneNumber = prompt(this.message);
-        console.log(phoneNumber);
-    },
-
-    showDeferredPrompt(ms) {
-        console.log(this)
-        setTimeout(this.showPrompt.bind(this), ms)
-    }
-
+export const getTitleElement = () => {
+    const titleElem = document.querySelector(".title");
+    console.dir(titleElem)
+    return titleElem
 }
 
-callbackPrompt.showDeferredPrompt(1000)
+export const getInputElement = () => {
+    const inputElement = document.querySelector('input type="text"')
+    console.dir(inputElement)
+    return inputElement
+}
+
+console.log(getTitleElement())
+console.log(getInputElement())
