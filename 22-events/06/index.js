@@ -1,9 +1,16 @@
-//(string)=> undefined
+//algo
+//querySelector
+// clickFunc: 1)log('clicked)  2)btn.removeEventListener
+// btn addEventListener
 
-export function setButton (text) {
-    document.querySelector("body").innerHTML = `<button>${text}</button>`
-    //document.querySelector("body").textContent = `<button>${text}</button>`
+const btn = document.querySelector(".single-use-btn")
+
+let clickFunc = () => {
+    console.log('clicked')
+    btn.removeEventListener("click", clickFunc)
 }
 
-setButton("Valera")
+
+btn.addEventListener("click", clickFunc)
+
 

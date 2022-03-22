@@ -1,16 +1,8 @@
-export function getTitle() {
-    return document.querySelector('.title').textContent;
-}
+// algo
+// listener to checkbox
+// log(checkbox.checked)
 
-export function getDescription() {
-    return document.querySelector('.about').innerText;
-}
-
-export function getPlans() {
-    return document.querySelector('.plans').innerHTML;
-}
-
-export function getGoal() {
-    return document.querySelector('.goal').outerHTML;
-}
+const checkbox = document.querySelector(".task-status")
+const checkboxStatus = () => console.log(checkbox.checked)
+checkbox.addEventListener("change", checkboxStatus)
 
