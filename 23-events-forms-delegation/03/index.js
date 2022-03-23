@@ -1,70 +1,143 @@
-// так можно получить данные формы - ВАРИАНТ 1:
-// eslint-disable-next-line no-undef
-// const formFields = [...new FormData(formElem)];
-// // formFields => [["email", "значение поля email"], ["password", "значение поля password"]]
+//algo (with ID)
+//-add id to object
+//-tasksList.map(({text, done, id})
+//-checkbox.setAttribute('data-id', id);
+
+
+const listElem = document.querySelector('.list');
+const createBtnElem = document.querySelector('.create-task-btn');
+const input = document.querySelector('.task-input');
+
+
+const tasks = [
+    {text: 'Buy milk', done: false, id: 1},
+    {text: 'Pick up Tom from airport', done: false, id: 2},
+    {text: 'Visit party', done: false, id: 3},
+    {text: 'Visit doctor', done: true, id: 4},
+    {text: 'Buy meat', done: true, id: 5},
+];
+
+const renderTasks = tasksList => {
+    listElem.innerHTML = ""
+
+    const tasksElems = tasksList
+        .sort((a, b) => a.done - b.done)
+        .map(({text, done, id}) => {
+            const listItemElem = document.createElement('li');
+            listItemElem.classList.add('list__item');
+
+            const checkbox = document.createElement('input');
+            checkbox.setAttribute('type', 'checkbox');
+            checkbox.setAttribute('data-id', id);
+            checkbox.checked = done;
+            checkbox.classList.add('list__item-checkbox');
+
+            if (done) {
+                listItemElem.classList.add('list__item_done');
+            }
+            listItemElem.append(checkbox, text);
+
+            return listItemElem;
+        });
+
+    listElem.append(...tasksElems);
+};
+
+renderTasks(tasks);
+
+
+
+//algo
+//1. addTask
+//- addEventListener("click", handler)
+//handler:
+// ---- (if false=> return)
+// ---- create newTask object (text: inputElem.value, done:false; id:)
+// ---- tasks.push  task
+// ---- clear inputElem.value
+// ---- renderTasks(tasks)
+
+//2. toggleTask(event)
+
+// - addEventListener('click', toggleTask);
+//handler:
+//---tasks.forEach((task) => if (task.id === +event.target.dataset.id) {
+//--- if (task.done===false) task.done=true and reverse
+//---renderTasks(tasks)
+
+
+
+
+
+const addTask = () => {
+
+    if (!input.value) {
+        return;
+    }
+    const newTask = {
+        text:input.value,
+        done: false,
+        id: Date.now()
+    };
+    tasks.push(newTask);
+    input.value = '';
+    renderTasks(tasks);
+};
+
+
+createBtnElem.addEventListener('click', addTask);
+
+
+const toggleTask = (event) => {
+    tasks.forEach((task) => {
+        if (task.id === +event.target.dataset.id) {
+            if (task.done === false) {
+                task.done = true;
+            } else {
+                task.done = false;
+            }
+        }
+    })
+
+    renderTasks(tasks)
+
+};
+
+listElem.addEventListener('click', toggleTask);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// const renderTasks = listItems => {
+//     const list = document.querySelector(".list")
 //
-// const formData = formFields.reduce(function (acc, formField) {
-//   const prop = formField[0]; // здесь "name" инпута
-//   const value = formField[1]; // здесь "value" инпута
-//   // если использовать деструктуризацию, то можно предыдущие 2 строки записать короче
-//   // const [prop, value] = formField;
-//   return {
-//     // используем оператор расширения, чтобы в acc добвить свойства все предыдущих итераций
-//     ...acc,
-//     // используем вычислимое свойство объекта, чтобы добавить в аккумулятор новое свойство
-//     [prop]: value,
-//   };
-// }, {});
-
-// более простой формат считывания формы - ВАРИАНТ 2:
-// const formData = Object.fromEntries(new FormData(formElem));
-
-
-const emailInputElem = document.querySelector('#email');
-const passwordInputElem = document.querySelector('#password');
-const emailErrorEl = document.querySelector('.error-text_email');
-const passwordErrorEl = document.querySelector('.error-text_password');
-
-const isRequired = value => value ? undefined : "Required";
-const isEmail = value => value.includes("@") ? undefined : "Should be an email";
-
-const validatorsByField = {
-    email: [isRequired, isEmail],
-    password: [isRequired]
-}
-
-const validate = (fieldName, value) => {
-    const validators = validatorsByField[fieldName];
-    return validators
-        .map(validator => validator(value))
-        .filter(errorText => errorText)
-        .join(", ");
-
-}
-
-const onEmailChange = event => {
-    const errorText = validate("email", event.target.value);
-
-    emailErrorEl.textContent = errorText;
-}
-
-const onPasswordChange = event => {
-    const errorText = validate("password", event.target.value);
-    passwordErrorEl.textContent = errorText;
-}
-
-
-emailInputElem.addEventListener("input", onEmailChange)
-passwordInputElem.addEventListener("input", onPasswordChange)
-
-
-const formElem = document.querySelector('.login-form');
-
-const onFormSubmit = event => {
-    event.preventDefault()
-    const formData = [...new FormData(formElem)]
-        .reduce((acc, [name, value]) => ({...acc, [name]: value}), {})
-    alert(JSON.stringify(formData))
-}
-
-formElem.addEventListener('submit', onFormSubmit)
+//     const listItemElems = listItems.map(itemText=> {
+//         const liElem= document.createElement("li")
+//         liElem.classList.add("list__item")
+//         liElem.append(itemText)
+//
+//         return  liElem
+//     })
+//
+//     list.append(...listItemElems)
+// }
+//
+// renderTasks(tasks)
