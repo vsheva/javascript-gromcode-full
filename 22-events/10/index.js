@@ -1,16 +1,19 @@
-export function finishForm() {
+// algo
+//query
+// addListener => e.target.attributes["data-page-number"].textContent
 
-    let formElem = document.querySelector('.login-form')
-    let inputPas = document.querySelector('input')
-
-    let inputLogin = document.createElement('input')
-    //inputLogin.name = 'login'
-    inputLogin.setAttribute('name', 'login')
-    inputLogin.setAttribute('type', 'text')
-    formElem.prepend(inputLogin)
-
-    //inputPas.type = 'password'
-    inputPas.setAttribute('type', 'password')
-}
+// const paginations = document.querySelectorAll(".pagination__page")
+// const handleClick = (e) => console.log(e.target.attributes["data-page-number"].textContent)
+// paginations.forEach(element => {
+//     element.addEventListener("click", handleClick)
+// })
 
 
+//refactoring
+// paginations.addListener =>  event.target.dataset.pageNumber
+
+const paginations = Array.from(document.querySelectorAll(".pagination__page"))
+const handleClick = (e) => console.log(e.target.dataset.pageNumber)
+
+paginations.forEach(element => element.addEventListener("click", handleClick))
+//paginations.map(element => element.addEventListener("click", handleClick))
