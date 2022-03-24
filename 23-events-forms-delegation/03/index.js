@@ -67,8 +67,6 @@ renderTasks(tasks);
 
 
 
-
-
 const addTask = () => {
 
     if (!input.value) {
@@ -77,6 +75,11 @@ const addTask = () => {
     const newTask = {
         text:input.value,
         done: false,
+        //date.stamp (ms from 01.01.1970)
+        //new Date(1900, 2).getTime() //-2221432423542
+        //getFullYear() getDate() ..день месяца getDay() .. номер дня недели
+        //setMonth(0,11)
+        //setDay(0,6)
         id: Date.now()
     };
     tasks.push(newTask);
