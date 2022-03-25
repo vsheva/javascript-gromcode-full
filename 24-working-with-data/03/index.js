@@ -1,4 +1,4 @@
-export const getDiff = (startDate, endDate) => {
+const getDiff = (startDate, endDate) => {
     const start = new Date(startDate).getTime()
     const end = new Date(endDate).getTime()
     const timeRemaining = Math.abs(end - start)/1000;
@@ -48,20 +48,22 @@ console.log(getDiff(secondDate, firstDate))
 
 
 
-
-
-
-
-
 // const getDiff = (startDate, endDate) => {
 //
-//     const date1 = new Date(startDate).getTime()
-//     console.log(date1)
-//     const date2 = new Date(endDate).getTime()
+//     let start = new Date(startDate).getTime();
+//     let end = new Date(endDate).getTime();
+//     let timeRemaining = Math.abs(end - start)/1000
 //
-//     return new Date(date2 - date1)
+//     let days= Math.trunc(timeRemaining/(60*60*24))
+//     let hours = Math.trunc((timeRemaining/(60*60))%24)
+//     let minutes = Math.trunc((timeRemaining/60)%60)
+//     let seconds = Math.trunc(timeRemaining %60)
+//
+//     return `${days}d ${hours}h ${minutes}m ${seconds}s`
+//
 // }
-// getDiff(10, 5)
 //
+// const date1 = new Date(2022, 0, 1, 5, 0, 0)
+// const date2 = new Date(2022, 0, 1, 5, 15, 0)
 //
-// console.log(new Date(1990, 0, 1).getTime())
+// console.log(getDiff(date1, date2))
