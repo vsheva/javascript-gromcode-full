@@ -6,29 +6,44 @@
 
 //подробно
 const shmoment = data => {
-    const momentumData =new Date(data)
+    const momentumData = new Date(data)
 
     const calculator = {
 
         add(text, number) {
-            if (text=== "years") { momentumData.setFullYear(momentumData.getFullYear() + number);}
-            else if (text=== "months") {momentumData.setMonth(momentumData.getMonth() + number); }
-            else if (text=== "days") { momentumData.setDate(momentumData.getDate() + number);}
-            else if (text=== "hours"){momentumData.setHours(momentumData.getHours() + number); }
-            else if (text=== "minutes") { momentumData.setMinutes(momentumData.getMinutes() + number);}
-            else if (text=== "seconds") { momentumData.setSeconds(momentumData.getSeconds() + number)}
-            else if (text=== "milliseconds") { momentumData.setMilliseconds(momentumData.getMilliseconds() + number)}
+            if (text === "years") {
+                momentumData.setFullYear(momentumData.getFullYear() + number);
+            } else if (text === "months") {
+                momentumData.setMonth(momentumData.getMonth() + number);
+            } else if (text === "days") {
+                momentumData.setDate(momentumData.getDate() + number);
+            } else if (text === "hours") {
+                momentumData.setHours(momentumData.getHours() + number);
+            } else if (text === "minutes") {
+                momentumData.setMinutes(momentumData.getMinutes() + number);
+            } else if (text === "seconds") {
+                momentumData.setSeconds(momentumData.getSeconds() + number)
+            } else if (text === "milliseconds") {
+                momentumData.setMilliseconds(momentumData.getMilliseconds() + number)
+            }
             return calculator; //this
         },
 
         subtract(text, number) {
-            if (text=== "years") momentumData.setFullYear(momentumData.getFullYear() - number);
-            else if (text=== "months") {momentumData.setMonth(momentumData.getMonth() - number);}
-            else if (text=== "days") {momentumData.setDate(momentumData.getDate() - number);}
-            else if (text=== "hours"){momentumData.setHours(momentumData.getHours() - number);}
-            else if (text=== "minutes"){momentumData.setMinutes(momentumData.getMinutes() - number);}
-            else if (text=== "seconds"){momentumData.setSeconds(momentumData.getSeconds() - number);}
-            else if (text=== "milliseconds"){momentumData.setMilliseconds(momentumData.getMilliseconds() - number);}
+            if (text === "years") momentumData.setFullYear(momentumData.getFullYear() - number);
+            else if (text === "months") {
+                momentumData.setMonth(momentumData.getMonth() - number);
+            } else if (text === "days") {
+                momentumData.setDate(momentumData.getDate() - number);
+            } else if (text === "hours") {
+                momentumData.setHours(momentumData.getHours() - number);
+            } else if (text === "minutes") {
+                momentumData.setMinutes(momentumData.getMinutes() - number);
+            } else if (text === "seconds") {
+                momentumData.setSeconds(momentumData.getSeconds() - number);
+            } else if (text === "milliseconds") {
+                momentumData.setMilliseconds(momentumData.getMilliseconds() - number);
+            }
             return calculator; //this
         },
 
@@ -41,17 +56,10 @@ const shmoment = data => {
 }
 
 
-
-
-
 const momentumTestData = new Date(2022, 2, 29, 12, 0, 0);
 console.log(momentumTestData);
 
 console.log(shmoment(momentumTestData).add("days", 1).subtract("years", 2).result());
-
-
-
-
 
 
 //refactoring
@@ -86,9 +94,6 @@ console.log(shmoment(momentumTestData).add("days", 1).subtract("years", 2).resul
 //         }
 //     }
 // }
-
-
-
 
 
 // const momentumTestData = new Date(2022, 2, 29, 12, 0, 0);

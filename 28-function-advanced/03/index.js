@@ -1,5 +1,5 @@
 //1.
-const mult = a => b => a*b
+const mult = a => b => a * b
 
 const twice = mult(2)
 console.log(twice(10))
@@ -10,7 +10,6 @@ const triple = mult(3)
 console.log(triple(10))
 // const result2 = triple(100)
 // console.log(result2)
-
 
 
 //2.

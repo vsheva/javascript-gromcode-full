@@ -1,5 +1,5 @@
 const calc = initValue => {
-    let result= initValue;
+    let result = initValue;
 
     const calculator = {
         add(value) {
