@@ -25,7 +25,7 @@ successPromise.then(function onSuccess(number) {
  * в обработчике ошибок промиса (ф-ция onError внутри .catch()) выведите в консоль текст 'I am an error'
  * текст вывелся в консоль?
  * подумайте почему
- * потому что промис выполнился успешно
+ * потому что промис находится в состоянии fulfilled (resolve). Может находиться только в одном состоянии
  * нет reject в промисе
  */
 successPromise.catch(function onError() {
