@@ -1,13 +1,29 @@
-const add2 = value => value + 2;
-const square = value => value * value;
-const half = value => value / 2;
+const serverResponsePromise = new Promise(resolve => {
+    const serverResponse = {
+        ok: true,
+        json() {
+            return Promise.resolve({
+                name: 'John',
+                age: 20,
+            });
+        },
+    };
+    resolve(serverResponse);
+});
 
-export const compose = (...funcs) => value => {
-    return funcs.reduce((acc, func) => func(acc), value);
-}
+/*
+ * допиши первый обработчик, чтобы во второй попал объект пользователя
+ */
 
+serverResponsePromise
+    .then((response) => {
+        /* ...code here */
+        return response.json()
+    })
+    .then(result => {
+        console.log(result); // { name: 'John', age: 20 }
+    });
 
-const superFunc = compose(add2, square, half)
-
-console.log(superFunc(2))
-
+console.log(
+    '!!! Обрати внимание, что этот текст вывелся самым первым. Ведь это синхронный код, а промисы - асинхронны !!!',
+);
