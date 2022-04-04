@@ -31,6 +31,11 @@ body {
     width: 100%;
 }
 
+
+.list__item {
+    margin-bottom: 8px;
+}
+
 .list-item {
     display: flex;
     align-items: center;
@@ -41,11 +46,16 @@ body {
     padding: 8px;
 }
 
-.list-item_done {
-    opacity: 0.7;}
-.list-item_done .list-item__text
-{text-decoration: line-through;}
+/*.list-item_done {*/
+/*    opacity: 0.7;}*/
+/*.list-item_done .list-item__text*/
+/*{text-decoration: line-through;}*/
 
+
+.list-item_done {
+    text-decoration: line-through;
+    opacity: 0.7;
+}
 
 
 .list-item:last-child {
@@ -95,5 +105,7 @@ body {
     text-align: center;
     opacity: 0.7;
 }
+
 .list-item__delete-btn:before {
-    content: "+";}
+    content: "+";
+}

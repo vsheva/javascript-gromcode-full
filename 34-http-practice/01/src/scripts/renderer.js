@@ -6,9 +6,11 @@ const compareTasks = (a, b) => {
     }
 
     if (a.done) {
-        return new Date(b.finishDate) - new Date(a.finishDate);
+        // new Date(b.finishDate) - new Date(a.finishDate);
+        return new Date(b.date) - new Date(a.date);
     }
-    return new Date(b.createDate) - new Date(a.createDate);
+    //new Date(b.createDate) - new Date(a.createDate);
+    return new Date(b.date) - new Date(a.date);
 };
 
 const createCheckboxElem = ({done, id}) => {
