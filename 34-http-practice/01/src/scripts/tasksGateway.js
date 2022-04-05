@@ -1,7 +1,4 @@
-export const baseUrl = 'https://61b09d973c954f001722a503.mockapi.io/api/v1//task';
-
-export const getTasksList = () => fetch(baseUrl).then(respone => respone.json());
-console.log(getTasksList());
+export const baseUrl = 'https://624c1be471e21eebbcfa4939.mockapi.io/api/v1/tasks';
 
 export const createTask = taskData =>
     fetch(baseUrl, {
@@ -25,3 +22,11 @@ export const deleteTask = taskId =>
     fetch(`${baseUrl}/${taskId}`, {
         method: 'DELETE',
     });
+
+//
+const mapTasks = tasks =>tasks.map(({_id, ...rest})=>({id: _id, ...rest}))
+
+export const getTasksList = () => fetch(baseUrl)
+    .then(response => response.json())
+    .then(mapTasks)
+console.log(getTasksList());
