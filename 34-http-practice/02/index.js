@@ -6,7 +6,7 @@ export function getUsersList() {
 }
 
 
-export function getUserById (userId) {
+export function getUserById(userId) {
     return fetch(`${url}/${userId}`)
         .then(response => response.json())
 }
@@ -16,7 +16,7 @@ export function createUser(userData) {
     return fetch(url, {
         method: 'POST',
         headers: {
-            'Content-Type':'application/json',
+            'Content-Type': 'application/json',
         },
         body: JSON.stringify(userData)
     })
@@ -24,25 +24,22 @@ export function createUser(userData) {
 }
 
 export function deleteUser(userId) {
-    return fetch (`${url}/${userId}`, {
+    return fetch(`${url}/${userId}`, {
         method: 'DELETE',
     })
 }
 
-
-
-export function updateUser(userId,userData ) {
-    return fetch (`${url}/${userId}`, {
+// userData, userId
+export function updateUser(userId, userData) {
+    return fetch(`${url}/${userId}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json;charset=utf-8',
         },
-        body:JSON.stringify(userData)
+        body: JSON.stringify(userData)
     })
         .then(response => response.json())
 }
-
-
 
 
 // examples
@@ -74,7 +71,7 @@ const updatedUserData = {
     age: 17,
 };
 
-updateUser( updatedUserData, '1',).then(() => {
+updateUser(updatedUserData, '1',).then(() => {
     console.log('User updated');
 });
 
