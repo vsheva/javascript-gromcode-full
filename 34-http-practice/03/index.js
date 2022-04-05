@@ -16,6 +16,8 @@
 //--- setAttribute
 
 
+//clearing the form using: createUser(newData).then(()=>{ emailInputElem.value = ''}
+
 
 const url = 'https://61eaff907ec58900177cdb49.mockapi.io/api/v1/registration';
 
@@ -60,6 +62,11 @@ const onClickHandler = (e) => {
 
     createUser(newData)
         .then(data => alert(JSON.stringify(data)))
+        .then(()=>{
+                 emailInputElem.value = '';
+                 nameInputElem.value = '';
+                 passwordInputElem.value = '';
+        })
 }
 
 //2. loginForm.addEventListener('submit', onClickHandler)
