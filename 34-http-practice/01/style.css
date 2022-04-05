@@ -46,16 +46,19 @@ body {
     padding: 8px;
 }
 
-/*.list-item_done {*/
-/*    opacity: 0.7;}*/
-/*.list-item_done .list-item__text*/
-/*{text-decoration: line-through;}*/
-
-
 .list-item_done {
-    text-decoration: line-through;
     opacity: 0.7;
 }
+
+.list-item_done .list-item__text {
+    text-decoration: line-through;
+}
+
+
+/*.list-item_done {*/
+/*    text-decoration: line-through;*/
+/*    opacity: 0.7;*/
+/*}*/
 
 
 .list-item:last-child {

@@ -6,11 +6,9 @@ const compareTasks = (a, b) => {
     }
 
     if (a.done) {
-        // new Date(b.finishDate) - new Date(a.finishDate);
-        return new Date(b.date) - new Date(a.date);
+        return new Date(b.finishDate) - new Date(a.finishDate);
     }
-    //new Date(b.createDate) - new Date(a.createDate);
-    return new Date(b.date) - new Date(a.date);
+    return new Date(b.createDate) - new Date(a.createDate);
 };
 
 const createCheckboxElem = ({done, id}) => {
@@ -29,9 +27,11 @@ const createListItem = ({text, done, id}) => {
     if (done) {
         listItemElem.classList.add('list-item_done');
     }
+
     const textElem = document.createElement('span');
     textElem.classList.add('list-item__text');
     textElem.textContent = text;
+
     const delBtnElem = document.createElement('button');
     delBtnElem.classList.add('list-item__delete-btn');
     delBtnElem.setAttribute('data-id', id);
@@ -41,7 +41,9 @@ const createListItem = ({text, done, id}) => {
 
 export const renderTasks = tasksList => {
     listElem.innerHTML = '';
-    const tasksElems = tasksList.sort(compareTasks).map(createListItem);
+    const tasksElems = tasksList
+        .sort(compareTasks)
+        .map(createListItem);
     // console.log(tasksElems);
 
     listElem.append(...tasksElems);
