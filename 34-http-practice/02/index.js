@@ -1,49 +1,83 @@
-// algo
-// counter
-//1. data-type="increase" to left, "decrease" to right btn
-//2. add event listener on btns onCounterChange(e)
-//3. get dataset.type of button
-//4. realised counter value ++ or -- textContent
-//5. add counter value to local storage
-//6. add storage event window.addEventListener('storage' onStorageChange)
+const url = 'https://61eaff907ec58900177cdb49.mockapi.io/api/v1/users';
 
-
-
-
-const counterElem = document.querySelector(".counter")
-const counterValueElem = document.querySelector(".counter__value")
-
-const onCounterChange = (e) => {                                     //2
-    const isButton = e.target.classList.contains("counter__button")
-
-    if (!isButton) {
-        return
-    }
-
-    const action = e.target.dataset.action                          //3
-    const oldValue = Number(counterValueElem.textContent)
-
-    const newValue = action === "decrease"                          //1
-        ? oldValue - 1 : oldValue + 1;
-
-    counterValueElem.textContent = newValue;                        //4
-    localStorage.setItem("counterValue", newValue)
-
+export function getUsersList() {
+    return fetch(url)
+        .then(response => response.json())
 }
 
-counterElem.addEventListener("click", onCounterChange);
 
-
-//add counter value to local storage (на нес. вкладок)              //5
-const onStorageChange = (e) => {
-    //e has свойство newValue
-    counterValueElem.textContent = e.newValue;
+export function getUserById (userId) {
+    return fetch(`${url}/${userId}`)
+        .then(response => response.json())
 }
-window.addEventListener("storage", onStorageChange)
 
 
-// add storage event window.addEventListener('storage' onStorageChange) значения из localeStorage на DOM    //6
-const onDocumentLoaded = () => {
-    counterValueElem.textContent = localStorage.getItem("counterValue") || 0;
+export function createUser(userData) {
+    return fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type':'application/json',
+        },
+        body: JSON.stringify(userData)
+    })
+        .then(response => response.json())
 }
-document.addEventListener("DOMContentLoaded", onDocumentLoaded)
+
+export function deleteUser(userId) {
+    return fetch (`${url}/${userId}`, {
+        method: 'DELETE',
+    })
+}
+
+
+
+export function updateUser(userId,userData ) {
+    return fetch (`${url}/${userId}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json;charset=utf-8',
+        },
+        body:JSON.stringify(userData)
+    })
+        .then(response => response.json())
+}
+
+
+
+
+// examples
+getUsersList().then(users => {
+    console.log(users); // array of the user objects [{'id':'1', 'firstName':'Grayce' ... }, {'id':'2', 'firstName':'Ara' ... }, ...]
+});
+
+getUserById('2').then(userData => {
+    console.log(userData); // {'id':'2', 'firstName':'Ara' ... }
+});
+
+
+const newUserData = {
+    email: 'cool@email.com',
+    firstName: 'Valerii',
+    lastName: 'Shevchenko',
+    age: 40,
+};
+
+createUser(newUserData).then(() => {
+    console.log('User created');
+});
+
+
+const updatedUserData = {
+    email: 'new@email.com',
+    firstName: 'Roman',
+    lastName: 'Shevchenko',
+    age: 17,
+};
+
+updateUser( updatedUserData, '1',).then(() => {
+    console.log('User updated');
+});
+
+deleteUser('2').then(() => {
+    console.log('User updated');
+});
