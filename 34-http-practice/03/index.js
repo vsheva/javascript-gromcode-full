@@ -39,7 +39,7 @@ const onValidHandler = () => {
 
 allInputs.forEach(element => element.addEventListener("input", onValidHandler))
 
-//1.
+//1. http-request
 function createUser(userData) {
     return fetch(url, {
         method: 'POST',
