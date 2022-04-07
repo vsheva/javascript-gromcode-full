@@ -2,7 +2,7 @@
 // get DOM elements
 //1. export fetchUserRepo (data)=>return fetch(data.repos_url)
 //подписываемся: .then(response=>response.json).then(result=>renderUserRepos(result).
-//               .catch((error) =>alert("Failed to load data"))
+//               .catch((error) =>alert("Failed to load data"));
 
 //2.  renderUserRepos (data) => data.map=> создаем DOM element=> DOM.innerHTML=repoUserString
 // //spinner       a)отменяем spinner: делаем обязательным через .finally()
