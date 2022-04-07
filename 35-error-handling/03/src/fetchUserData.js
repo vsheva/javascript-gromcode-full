@@ -7,7 +7,7 @@
 //2.  renderUserRepos (data) => data.map=> создаем DOM element=> DOM.innerHTML=repoUserString
 // //spinner       a)отменяем spinner: делаем обязательным через .finally()
 // //              b) ложим его в callback()=>{spinnerElem.classList.add("spinner_hidden")},
-// //                    чтобы отработал когда нужно, иначе ошибка
+// //                    чтобы отработал в нужное время.
 
 
 const spinnerElem = document.querySelector(".spinner")

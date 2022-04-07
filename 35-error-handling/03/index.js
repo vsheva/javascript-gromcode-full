@@ -13,7 +13,7 @@
 //spinner ----> устананавливаем перед подпиской на запрос  в handler onSearchUser
 //        ----> a)отменяем spinner: делаем обязательным через .finally()
 //              b) ложим его в callback()=>{spinnerElem.classList.add("spinner_hidden")},
-//                    чтобы отработал в нужное время, иначе ошибка
+//                    чтобы отработал в нужное время.
 
 
 
