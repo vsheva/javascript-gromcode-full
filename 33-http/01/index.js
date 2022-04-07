@@ -17,11 +17,11 @@ const defaultAvatar = 'https://avatars3.githubusercontent.com/u1001';
 userAvatarElem.src = defaultAvatar
 
 //http request
-const fetchUserData = (userName) => {
-    return fetch(`https://api.github.com/users/${userName}`)
+const fetchUserData = (name) => {
+    return fetch(`https://api.github.com/users/${name}`)
         .then(response => response.json())
 }
-
+//render
 const renderUserData = (userData) => {
     console.log(userData)
     const {avatar_url, name, location} = userData
@@ -30,10 +30,10 @@ const renderUserData = (userData) => {
     userLocationElem.textContent = location ? `from ${location}` : "";
 }
 
+//onSearch
 const onSearchUser = () => {
     const userName = inputFormElem.value
-    fetchUserData(userName)
-        .then(userData => renderUserData(userData))
+    fetchUserData(userName ).then(userData => renderUserData(userData))
 }
 
 buttonElem.addEventListener("click", onSearchUser)
@@ -129,8 +129,7 @@ buttonElem.addEventListener("click", onSearchUser)
 // //1-a.
 // const onSearchUser = () => {
 //     const userName = userNameInputElem.value;
-//     fetchUserData(userName)                           //
-//         .then(userData => renderUserData(userData)); //
+//     fetchUserData(userName).then(userData => renderUserData(userData));
 // };
 // //1.
 // showUserBtnElem.addEventListener('click', onSearchUser);

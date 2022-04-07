@@ -41,6 +41,7 @@ allInputs.forEach(element => element.addEventListener("input", onValidHandler))
 
 //1. http-request
 function createUser(userData) {
+    //const url = 'https://61eaff907ec58900177cdb49.mockapi.io/api/v1/registration';
     return fetch(url, {
         method: 'POST',
         headers: {
