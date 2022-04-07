@@ -1,6 +1,6 @@
 //algo
 // get DOM elements
-//1.fetchUserRepo (data)=>return fetch(data.repos_url)
+//1. export fetchUserRepo (data)=>return fetch(data.repos_url)
 //подписываемся: .then(response=>response.json).then(result=>renderUserRepos(result).
 //               .catch((error) =>alert("Failed to load data"))
 
