@@ -1,14 +1,5 @@
-//algo
-// get DOM elements
-//1. export fetchUserRepo (data)=>return fetch(data.repos_url)
-//подписываемся: .then(response=>response.json).then(result=>renderUserRepos(result).
-//               .catch((error) =>alert("Failed to load data"));
-
-//2.  renderUserRepos (data) => data.map=> создаем DOM element=> DOM.innerHTML=repoUserString
-// //spinner       a)отменяем spinner: делаем обязательным через .finally()
-// //              b) ложим его в callback()=>{spinnerElem.classList.add("spinner_hidden")},
-// //                    чтобы отработал в нужное время.
-
+//algo в 35 уроке, задача 3
+//добавлен async-await
 
 const spinnerElem = document.querySelector(".spinner")
 const repoListElem = document.querySelector(".repo-list")
@@ -20,12 +11,12 @@ const renderUserRepos =(data) => {
 }
 
 
-export const fetchUserRepos = async (data) =>{
+export const fetchUserRepos = async (userData) =>{
 
     try{
-       const response = await fetch(data.repos_url)
-        const data = await response.json()
-        renderUserRepos(result)
+       const response = await fetch(userData.repos_url)
+        const datas = await response.json()
+        renderUserRepos(datas)
     }
     catch(err){
         alert("Failed to load data")
