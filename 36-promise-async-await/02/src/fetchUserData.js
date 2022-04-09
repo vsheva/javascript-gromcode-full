@@ -20,12 +20,26 @@ const renderUserRepos =(data) => {
 }
 
 
-export const fetchUserRepos = (data) =>{
-    return fetch(data.repos_url)
-        .then(response => response.json())
-        .then(result=> renderUserRepos(result))
-        .catch((error) =>alert("Failed to load data"))
-        .finally(() =>spinnerElem.classList.add("spinner_hidden"))
+export const fetchUserRepos = async (data) =>{
+
+    try{
+       const response = await fetch(data.repos_url)
+        const data = await response.json()
+        renderUserRepos(result)
+    }
+    catch(err){
+        alert("Failed to load data")
+    }finally {
+        spinnerElem.classList.add("spinner_hidden")
+    }
+
+
+
+    // return fetch(data.repos_url)
+    //     .then(response => response.json())
+    //     .then(result=> renderUserRepos(result))
+    //     .catch((error) =>alert("Failed to load data"))
+    //     .finally(() =>spinnerElem.classList.add("spinner_hidden"))
 
 }
 
