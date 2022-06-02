@@ -16,10 +16,19 @@ class Auth extends Component {
 // state - это обьект, и нам нужно придумать ему ключи
   //isLoggedIn: bool
   //isSpinnerOn: bool (на какой стадии авторизация -isProcessing,загрузился или нет)
-  //
-  //
 
-  handleLogin = () => {
+//algo
+  //1.show Login by default
+  //2. after Login clock - show Spinner for 2 seconds
+  //3. hide Spinner, show Logout
+  //4. after Logout click - show Login
+
+//in: obj;
+  //out: undef
+
+  //setState мержит обьекты (добавляет новый)
+  //setState async,
+  loginHandler = () => {
     this.setState({
       isLoggedIn: false,
       isSpinnerOn: true,
@@ -32,29 +41,24 @@ class Auth extends Component {
     }, 2000);
   };
 
-  handleLogout = () => {
+  logoutHandler = () => {
     this.setState({
       isLoggedIn: false,
-      isSpinnerOn: false,
     });
   };
 
-  render() {
+  render(){
     const button = this.state.isLoggedIn
-        ? (<Logout onLogout={() => this.handleLogout()} />)
-        : (<Login onLogin={() => this.handleLogin()} />);
-
+        ? (<Logout onLogout={() => this.logoutHandler()} />)
+        : (<Login onLogin={() => this.loginHandler()} />);
     return (
-      <div className="panel">
-        {this.state.isSpinnerOn && <Spinner size={'30px'} />}
-        {button}
-      </div>
+        <div className="panel">
+          {this.state.isSpinnerOn && <Spinner size={'30px'} />}
+          {button}
+        </div>
     );
   }
 }
 
 export default Auth;
 
-// const button = this.state.isLoggedIn === true
-//     ? <button className="logout btn" onClick={this.handleLogout}>Logout</button>
-//     : <button className="login btn" onClick={this.handleLogin}>Login</button>
